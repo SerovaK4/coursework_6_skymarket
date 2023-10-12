@@ -42,10 +42,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "corsheaders",
     "rest_framework",
+    "rest_framework_simplejwt",
     "users",
     "ads",
     "redoc",
     "drf_spectacular",
+    "djoser",
 ]
 
 MIDDLEWARE = [
@@ -80,6 +82,7 @@ TEMPLATES = [
 WSGI_APPLICATION = "skymarket.wsgi.application"
 
 # TODO здесь мы настраиваем аутентификацию и пагинацию
+
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     "DEFAULT_PAGINATION_CLASS": 'rest_framework.pagination.PageNumberPagination',
@@ -97,6 +100,10 @@ SPECTACULAR_SETTINGS = {
 
 # TODO здесь мы настраиваем Djoser
 DJOSER = {
+    'SERIALIZERS': {
+        'user_create': 'users.serializers.UserRegistrationSerializer'
+    },
+    'LOGIN_FIELD': 'email'
 }
 
 # Database
@@ -106,11 +113,11 @@ DJOSER = {
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME"),
-        "USER": os.getenv("DB_USER"),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-        "HOST": os.getenv("DB_HOST"),
-        "PORT": os.getenv("DB_PORT")
+        "NAME": "skymarket",
+        "USER": "postgres",
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        "HOST": "localhost",
+        "PORT": 5432
     }
 }
 
@@ -148,12 +155,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "django_static")
 MEDIA_URL = "/django_media/"
 MEDIA_ROOT = os.path.join(BASE_DIR, "django_media")
 
-SPECTACULAR_SETTINGS = {
-    'TITLE': 'skymarket',
-    'DESCRIPTION': 'Awesome avito project',
-    'VERSION': '1.0.0',
-}
-
 # CORS
 CORS_ALLOW_ALL_ORIGINS = True
 
@@ -171,3 +172,5 @@ EMAIL_HOST = os.environ.get("EMAIL_HOST", "smtp.gmail.com")
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
 EMAIL_PORT = os.environ.get("EMAIL_PORT")
+
+AUTH_USER_MODEL = 'users.User'
