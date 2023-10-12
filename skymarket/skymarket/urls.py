@@ -8,9 +8,10 @@ from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 # TODO здесь необходимо подклюючит нужные нам urls к проекту
 
 urlpatterns = [
-    path("api/admin/", admin.site.urls),
-    path("api/redoc-tasks/", include("redoc.urls")),
+    path("/admin/", admin.site.urls),
+    path("/redoc-tasks/", include("redoc.urls")),
     path('', include('users.urls')),
+    #path('', include('ads.urls')),
 
     path('api/schema/', SpectacularAPIView.as_view(), name='schema'),
     path('api/schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema'), name='swagger-ui'),
