@@ -7,7 +7,7 @@ from ads.models import Ad, Comment
 
 @admin.register(Ad)
 class AdAdmin(admin.ModelAdmin):
-    list_display = ("title", "price", "description", "image", "author")
+    list_display = ("title", "price", "description", "image", "author", "created_at")
 
 
 @admin.register(Comment)
