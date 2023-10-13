@@ -14,6 +14,7 @@ class Ad(models.Model):
     description = models.CharField(max_length=200, verbose_name="Описание товара", **NULLABLE)
     image = models.ImageField(upload_to="media/", verbose_name="Фото товара", **NULLABLE)
     author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
+    created_at = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f'{self.title}: {self.description}'
@@ -21,6 +22,7 @@ class Ad(models.Model):
     class Meta:
         verbose_name = "Объявление"
         verbose_name_plural = "Объявления"
+        ordering = ["-created_at"]
 
 
 class Comment(models.Model):
