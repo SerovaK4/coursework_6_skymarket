@@ -25,7 +25,7 @@ class Ad(models.Model):
 
 class Comment(models.Model):
     text = models.TextField(max_length=400, default=None)
-    created_at = models.DateTimeField(default=timezone.now())
+    created_at = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE, **NULLABLE)
     ad = models.ForeignKey(Ad, on_delete=models.CASCADE, **NULLABLE)
 
