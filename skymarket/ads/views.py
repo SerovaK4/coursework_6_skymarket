@@ -3,10 +3,10 @@ from rest_framework import pagination, viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
 
-from skymarket.ads.filter import AdFilter
-from skymarket.ads.models import Ad, Comment
-from skymarket.ads.permissions import ReadOrCreatePermission, OwnerOrAdminPermission
-from skymarket.ads.serializers import CommentSerializer
+from ads.filter import AdFilter
+from ads.models import Ad, Comment
+from ads.permissions import ReadOrCreatePermission, OwnerOrAdminPermission
+from ads.serializers import CommentSerializer
 
 
 class AdPagination(pagination.PageNumberPagination):
@@ -15,7 +15,7 @@ class AdPagination(pagination.PageNumberPagination):
 
 # TODO view функции. Предлагаем Вам следующую структуру - но Вы всегда можете использовать свою
 class AdViewSet(viewsets.ModelViewSet):
-    queryset = Ad.object.all()
+    queryset = Ad.objects.all()
     filter_backends = (DjangoFilterBackend,)
     filterset_class = AdFilter
     pagination_class = AdPagination

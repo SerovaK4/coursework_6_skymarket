@@ -2,7 +2,7 @@
 
 from rest_framework import permissions
 
-from skymarket.users.models import User
+from users.models import User
 
 
 class ReadOrCreatePermission(permissions.BasePermission):
