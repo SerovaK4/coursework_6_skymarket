@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from skymarket.ads.models import Ad, Comment
+from ads.models import Ad, Comment
 
 
 # TODO здесь можно подкючить ваши модели к стандартной джанго-админке
@@ -12,5 +12,5 @@ class AdAdmin(admin.ModelAdmin):
 
 @admin.register(Comment)
 class CommentAdmin(admin.ModelAdmin):
-    list_display = ("text", "create_at", "author", "ad")
+    list_display = ("text", "created_at", "author", "ad")
 
