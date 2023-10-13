@@ -43,11 +43,15 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "rest_framework_simplejwt",
+
     "users",
     "ads",
     "redoc",
+
+    'django_filters',
     "drf_spectacular",
     "djoser",
+
 ]
 
 MIDDLEWARE = [
