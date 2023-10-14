@@ -8,6 +8,8 @@ from ads.models import Ad, Comment
 from ads.permissions import ReadOrCreatePermission, OwnerOrAdminPermission
 from ads.serializers import CommentSerializer
 
+from ads.serializers import AdSerializer
+
 
 class AdPagination(pagination.PageNumberPagination):
     page_size = 4
@@ -18,6 +20,7 @@ class AdViewSet(viewsets.ModelViewSet):
     queryset = Ad.objects.all()
     filter_backends = (DjangoFilterBackend,)
     filterset_class = AdFilter
+    serializer_class = AdSerializer
     pagination_class = AdPagination
 
     """
