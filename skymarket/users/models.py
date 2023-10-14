@@ -1,4 +1,4 @@
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractBaseUser, AbstractUser
 from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 from users.managers import UserManager, UserRole
@@ -15,21 +15,15 @@ class User(AbstractBaseUser):
     # которые необходимо заполнить при создании пользователя
     REQUIRED_FIELDS = ['first_name', 'last_name', 'phone']
 
-    email = models.EmailField(unique=True,
-                              max_length=100)
-    role = models.CharField(max_length=5,
-                            choices=UserRole.choices,
-                            default=UserRole.USER)
-    first_name = models.CharField(max_length=50,
-                                  null=True)
-    last_name = models.CharField(max_length=50,
-                                 null=True)
+    email = models.EmailField(unique=True, max_length=100)
+    role = models.CharField(max_length=5, choices=UserRole.choices, default=UserRole.USER)
+    first_name = models.CharField(max_length=50, null=True)
+    last_name = models.CharField(max_length=50, null=True)
     phone = PhoneNumberField()
     is_active = models.BooleanField(default=True)
 
     # также для работы модели пользователя должен быть переопределен
     # менеджер объектов
-
     objects = UserManager()
 
     # Необходимые параметры для корректной работе Django
@@ -50,13 +44,14 @@ class User(AbstractBaseUser):
     def is_staff(self):
         return self.is_admin
 
-    def has_perm(self):
+    def has_perm(self, perm, obj=None):
         return self.is_admin
 
-    def has_module_perms(self):
+    def has_module_perms(self, app_label):
         return self.is_admin
 
     class Meta:
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
         ordering = ("id",)
+
