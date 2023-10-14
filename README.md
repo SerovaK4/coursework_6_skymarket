@@ -52,4 +52,6 @@ EMAIL_HOST_USER=example@gmail.com
 
 EMAIL_HOST_PASSWORD=password
 
-EMAIL_PORT = 587
+EMAIL_PORT=587
+
+SECRET_KEY=django-insecure
