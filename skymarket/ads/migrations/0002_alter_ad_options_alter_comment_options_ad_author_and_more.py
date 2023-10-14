@@ -15,7 +15,8 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name="ad",
-            options={"verbose_name": "Объявление", "verbose_name_plural": "Объявления"},
+            options={"verbose_name": "Объявление",
+                     "verbose_name_plural": "Объявления"},
         ),
         migrations.AlterModelOptions(
             name="comment",
@@ -37,28 +38,36 @@ class Migration(migrations.Migration):
             model_name="ad",
             name="description",
             field=models.CharField(
-                blank=True, max_length=200, null=True, verbose_name="Описание товара"
+                blank=True, max_length=200,
+                null=True,
+                verbose_name="Описание товара"
             ),
         ),
         migrations.AddField(
             model_name="ad",
             name="image",
             field=models.ImageField(
-                blank=True, null=True, upload_to="media/", verbose_name="Фото товара"
+                blank=True, null=True,
+                upload_to="media/",
+                verbose_name="Фото товара"
             ),
         ),
         migrations.AddField(
             model_name="ad",
             name="price",
             field=models.DecimalField(
-                decimal_places=0, default=0, max_digits=12, verbose_name="Цена товара"
+                decimal_places=0, default=0,
+                max_digits=12,
+                verbose_name="Цена товара"
             ),
         ),
         migrations.AddField(
             model_name="ad",
             name="title",
             field=models.CharField(
-                default="Не указано", max_length=50, verbose_name="Название товара"
+                default="Не указано",
+                max_length=50,
+                verbose_name="Название товара"
             ),
         ),
         migrations.AddField(

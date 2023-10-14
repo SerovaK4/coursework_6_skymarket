@@ -15,7 +15,7 @@ class AdPagination(pagination.PageNumberPagination):
     page_size = 4
 
 
-# TODO view функции. Предлагаем Вам следующую структуру - но Вы всегда можете использовать свою
+# TODO view функции.
 class AdViewSet(viewsets.ModelViewSet):
     queryset = Ad.objects.all()
     filter_backends = (DjangoFilterBackend,)
@@ -35,14 +35,16 @@ class AdViewSet(viewsets.ModelViewSet):
         return super(self.__class__, self).get_permissions()
 
     """
-    ассоциациирует созданный объект с пользователем, который отправил запрос на его создание
+    ассоциациирует созданный объект с пользователем,
+    который отправил запрос на его создание
     """
 
     def perform_create(self, serializer):
         serializer.save(author=self.request.user)
 
     """
-    фильтрует объекты Ads по автору и возвращает все ему принадлежащие объявления
+    фильтрует объекты Ads по автору и возвращает
+    все ему принадлежащие объявления
     """
 
     def get_queryset(self):
@@ -70,7 +72,7 @@ class CommentViewSet(viewsets.ModelViewSet):
         return super(self.__class__, self).get_permissions()
 
     """
-    Возвращает список всех комментариев данного объявления
+    возвращает список всех комментариев данного объявления
     """
 
     def get_queryset(self):
@@ -79,7 +81,8 @@ class CommentViewSet(viewsets.ModelViewSet):
         return Comment.objects.filter(ad=ad).all()
 
     """
-    ассоциациирует созданный объект с пользователем, который отправил запрос на его создание
+    ассоциациирует созданный объект с пользователем, 
+    который отправил запрос на его создание
     """
 
     def perform_create(self, serializer):

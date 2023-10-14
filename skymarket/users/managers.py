@@ -10,8 +10,7 @@ class UserRole(models.TextChoices):
     ADMIN = "admin", "Administrator"
 
 
-# TODO здесь должен быть менеджер для модели Юзера.
-# TODO Поищите эту информацию в рекомендациях к проекту
+# TODO менеджер для модели Юзера.
 class UserManager(BaseUserManager):
     """
     Функция для создания пользователя
@@ -44,6 +43,6 @@ class UserManager(BaseUserManager):
             phone=phone,
             password=password,
         )
-        user.role=UserRole.ADMIN
+        user.role = UserRole.ADMIN
         user.save(using=self._db)
         return user

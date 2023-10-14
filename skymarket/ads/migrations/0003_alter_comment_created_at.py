@@ -6,7 +6,8 @@ import django.utils.timezone
 
 class Migration(migrations.Migration):
     dependencies = [
-        ("ads", "0002_alter_ad_options_alter_comment_options_ad_author_and_more"),
+        ("ads",
+         "0002_alter_ad_options_alter_comment_options_ad_author_and_more"),
     ]
 
     operations = [

@@ -8,7 +8,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 
 users_router = SimpleRouter()
 
-#регистрируем ViewSet, который импортирован из приложения Djoser
+# регистрируем ViewSet, который импортирован из приложения Djoser
 
 users_router.register("users", UserViewSet, basename="users")
 

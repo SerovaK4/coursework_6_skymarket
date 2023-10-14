@@ -32,7 +32,7 @@ ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
-# TODO здесь тоже нужно подключить Swagger и corsheaders
+# TODO подключение Swagger и corsheaders
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "corsheaders",
     "rest_framework",
+    'drf_yasg',
     "rest_framework_simplejwt",
 
     "users",
@@ -85,7 +86,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "skymarket.wsgi.application"
 
-# TODO здесь мы настраиваем аутентификацию и пагинацию
+# TODO настройка аутентификации и пагинации
 
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
@@ -102,7 +103,7 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
 }
 
-# TODO здесь мы настраиваем Djoser
+# TODO настройка Djoser
 DJOSER = {
     'SERIALIZERS': {
         'user_create': 'users.serializers.UserRegistrationSerializer'
@@ -113,7 +114,7 @@ DJOSER = {
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-# TODO здесь необходимо настроить подключение к БД
+# TODO настройка подключения к БД
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
